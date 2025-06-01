@@ -5,7 +5,7 @@
         <div class="lg:flex lg:items-center lg:justify-between">
           <div class="flex items-center justify-between">
             <Link href="/" class="flex items-center space-x-2">
-              <img :src="logoUrl" alt="brand logo" class="w-[60px] h-[60px] rounded-full">
+              <img :src="logoUrl" alt="brand logo" class="w-10 h-10 rounded-full">
               <h1 class="text-xl font-bold text-white">True Or Lie</h1>
             </Link>
             <!-- Mobile menu button -->
@@ -53,9 +53,28 @@
         </div>
       </div>
     </nav>
-    <main class="flex-1">
-      <slot />
-    </main>
+    <div class="flex-1 flex flex-row">
+      <!-- Left Ad -->
+      <div class="hidden lg:block w-0 lg:w-24 xl:w-32 flex-shrink-0">
+        <div class="sticky top-8 flex flex-col items-center">
+          <div id="left-adsense" class="w-full">
+            <!-- Google AdSense vertical ad will be injected here -->
+          </div>
+        </div>
+      </div>
+      <!-- Main Content -->
+      <main class="flex-1">
+        <slot />
+      </main>
+      <!-- Right Ad -->
+      <div class="hidden lg:block w-0 lg:w-24 xl:w-32 flex-shrink-0">
+        <div class="sticky top-8 flex flex-col items-center">
+          <div id="right-adsense" class="w-full">
+            <!-- Google AdSense vertical ad will be injected here -->
+          </div>
+        </div>
+      </div>
+    </div>
     <footer class="bg-white dark:bg-gray-900">
       <div class="container flex flex-col items-center justify-between px-6 py-8 mx-auto lg:flex-row">
         <Link href="/" class="flex items-center text-gray-800 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400">
@@ -79,7 +98,35 @@
 import { ref, onMounted } from 'vue'
 import { Link } from '@inertiajs/vue3'
 
-// Use absolute path for public assets in Vue (not import, not relative)
 const logoUrl = '/favicon_io/android-chrome-192x192.png'
-// Use a 60x60 display size for the logo to match Google's recommendation
+
+onMounted(() => {
+  // Inject AdSense script only once
+  if (!document.querySelector('script[src*="adsbygoogle.js"]')) {
+    const script = document.createElement('script')
+    script.async = true
+    script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3574329224038401"
+    script.crossOrigin = "anonymous"
+    document.head.appendChild(script)
+  }
+  // Insert ad containers
+  const adHtml = `
+    <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-3574329224038401"
+      data-ad-slot="5373666439"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  `
+  const left = document.getElementById('left-adsense')
+  const right = document.getElementById('right-adsense')
+  if (left && !left.innerHTML) left.innerHTML = adHtml
+  if (right && !right.innerHTML) right.innerHTML = adHtml
+  // Trigger adsbygoogle
+  setTimeout(() => {
+    if (window.adsbygoogle) {
+      try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) {}
+    }
+  }, 500)
+})
 </script>
