@@ -53,9 +53,28 @@
         </div>
       </div>
     </nav>
-    <main class="flex-1">
-      <slot />
-    </main>
+    <div class="flex-1 flex flex-row">
+      <!-- Left Ad -->
+      <div class="hidden lg:block w-0 lg:w-24 xl:w-32 flex-shrink-0">
+        <div class="sticky top-8 flex flex-col items-center">
+          <div id="left-adsense" class="w-full">
+            <!-- Google AdSense vertical ad will be injected here -->
+          </div>
+        </div>
+      </div>
+      <!-- Main Content -->
+      <main class="flex-1">
+        <slot />
+      </main>
+      <!-- Right Ad -->
+      <div class="hidden lg:block w-0 lg:w-24 xl:w-32 flex-shrink-0">
+        <div class="sticky top-8 flex flex-col items-center">
+          <div id="right-adsense" class="w-full">
+            <!-- Google AdSense vertical ad will be injected here -->
+          </div>
+        </div>
+      </div>
+    </div>
     <footer class="bg-white dark:bg-gray-900">
       <div class="container flex flex-col items-center justify-between px-6 py-8 mx-auto lg:flex-row">
         <Link href="/" class="flex items-center text-gray-800 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400">
@@ -76,12 +95,38 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { Link } from '@inertiajs/vue3'
 
-// Use absolute path for public assets in Vue (not import, not relative)
 const logoUrl = '/favicon_io/android-chrome-192x192.png'
 
-// Remove font inlining JS. Let your Blade layout handle font loading with a <link> tag for best performance.
-// If you want to optimize further, use only system fonts for first paint, or self-host woff2 and preload in <head>.
+onMounted(() => {
+  // Inject AdSense script only once
+  if (!document.querySelector('script[src*="adsbygoogle.js"]')) {
+    const script = document.createElement('script')
+    script.async = true
+    script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3574329224038401"
+    script.crossOrigin = "anonymous"
+    document.head.appendChild(script)
+  }
+  // Insert ad containers
+  const adHtml = `
+    <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-3574329224038401"
+      data-ad-slot="5373666439"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  `
+  const left = document.getElementById('left-adsense')
+  const right = document.getElementById('right-adsense')
+  if (left && !left.innerHTML) left.innerHTML = adHtml
+  if (right && !right.innerHTML) right.innerHTML = adHtml
+  // Trigger adsbygoogle
+  setTimeout(() => {
+    if (window.adsbygoogle) {
+      try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) {}
+    }
+  }, 500)
+})
 </script>
