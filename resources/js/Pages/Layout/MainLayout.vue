@@ -76,9 +76,12 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import { Link } from '@inertiajs/vue3'
 
 // Use absolute path for public assets in Vue (not import, not relative)
-const logoUrl = '/favicon_io/favicon-32x32.png'
+const logoUrl = '/favicon_io/android-chrome-192x192.png'
+
+// Remove font inlining JS. Let your Blade layout handle font loading with a <link> tag for best performance.
+// If you want to optimize further, use only system fonts for first paint, or self-host woff2 and preload in <head>.
 </script>
