@@ -6,7 +6,7 @@
           <div class="flex items-center justify-between">
             <Link href="/" class="flex items-center space-x-2">
               <img :src="logoUrl" alt="brand logo" class="w-10 h-10 rounded-full">
-              <h1 class="text-xl font-bold text-gray-400">True Or Lie</h1>
+              <h1 class="text-xl font-bold text-white">True Or Lie</h1>
             </Link>
             <!-- Mobile menu button -->
             <!--<div class="flex lg:hidden">
