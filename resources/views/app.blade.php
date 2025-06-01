@@ -73,6 +73,8 @@
       gtag('js', new Date());
       gtag('config', 'G-SCQ11YJVEY');
     </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3574329224038401"
+     crossorigin="anonymous"></script>
   </head>
   <body>
     @inertia
