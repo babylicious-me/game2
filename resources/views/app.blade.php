@@ -35,46 +35,13 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
 
-
     @vite('resources/js/app.js')
     @inertiaHead
-    <!-- Inline critical font CSS to avoid render-blocking -->
     <style>
-      @font-face {
-        font-family: 'Instrument Sans';
-        font-style: normal;
-        font-weight: 400;
-        font-display: swap;
-        src: url('https://fonts.bunny.net/woff2?family=instrument-sans:400') format('woff2');
-      }
-      @font-face {
-        font-family: 'Instrument Sans';
-        font-style: normal;
-        font-weight: 500;
-        font-display: swap;
-        src: url('https://fonts.bunny.net/woff2?family=instrument-sans:500') format('woff2');
-      }
-      @font-face {
-        font-family: 'Instrument Sans';
-        font-style: normal;
-        font-weight: 600;
-        font-display: swap;
-        src: url('https://fonts.bunny.net/woff2?family=instrument-sans:600') format('woff2');
-      }
       html, body {
-        font-family: 'Instrument Sans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
       }
     </style>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SCQ11YJVEY"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-SCQ11YJVEY');
-    </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3574329224038401"
-     crossorigin="anonymous"></script>
   </head>
   <body>
     @inertia
