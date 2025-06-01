@@ -1,0 +1,19 @@
+@import 'tailwindcss';
+
+
+
+body {
+  @apply bg-gray-900;
+
+}
+
+/* The "Failed to decode downloaded font" error is NOT caused by your CSS anymore.
+   It happens if you use @font-face with a CSS url, which you are NOT doing now.
+   If you still see the error, clear your browser cache and reload.
+   Make sure you only have this in your Blade template (not in CSS):
+
+   <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
+
+   Do NOT add @font-face for Instrument Sans in your CSS.
+*/
+
