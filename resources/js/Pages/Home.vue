@@ -1,6 +1,6 @@
 <script setup>
 import { Link, usePage } from '@inertiajs/vue3'
-import MainLayout from './layout/MainLayout.vue'
+import MainLayout from './Layout/MainLayout.vue'
 
 const route = usePage().props?.ziggy?.route ?? window.route // fallback for route helper
 

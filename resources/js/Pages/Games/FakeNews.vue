@@ -1,5 +1,5 @@
 <script setup>
-import MainLayout from '../layout/MainLayout.vue'
+import MainLayout from '../Layout/MainLayout.vue'
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 
