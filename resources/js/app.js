@@ -52,3 +52,27 @@ if (
 
 // Instead, use the <link> tag in your Blade template to load the font CSS, as you already do.
 // No changes are needed in app.js for this warning.
+
+// Dynamically load Google Analytics after page load for non-blocking LCP
+window.addEventListener('load', () => {
+  // Google Analytics
+  const gaScript = document.createElement('script');
+  gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-SCQ11YJVEY';
+  gaScript.async = true;
+  document.head.appendChild(gaScript);
+
+  gaScript.onload = () => {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', 'G-SCQ11YJVEY');
+  };
+
+  // Google AdSense
+  const adsScript = document.createElement('script');
+  adsScript.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3574329224038401';
+  adsScript.async = true;
+  adsScript.crossOrigin = 'anonymous';
+  document.head.appendChild(adsScript);
+});

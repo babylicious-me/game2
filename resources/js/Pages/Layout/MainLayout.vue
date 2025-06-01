@@ -5,8 +5,8 @@
         <div class="lg:flex lg:items-center lg:justify-between">
           <div class="flex items-center justify-between">
             <Link href="/" class="flex items-center space-x-2">
-              <img :src="logoUrl" alt="brand logo" class="w-10 h-10 rounded-full">
-              <h1 class="text-xl font-bold text-gray-200">True Or Lie</h1>
+              <img :src="logoUrl" alt="brand logo" class="w-[60px] h-[60px] rounded-full">
+              <h1 class="text-xl font-bold text-white">True Or Lie</h1>
             </Link>
             <!-- Mobile menu button -->
             <!--<div class="flex lg:hidden">
@@ -80,5 +80,6 @@ import { ref, onMounted } from 'vue'
 import { Link } from '@inertiajs/vue3'
 
 // Use absolute path for public assets in Vue (not import, not relative)
-const logoUrl = '/favicon_io/favicon-32x32.png'
+const logoUrl = '/favicon_io/android-chrome-192x192.png'
+// Use a 60x60 display size for the logo to match Google's recommendation
 </script>

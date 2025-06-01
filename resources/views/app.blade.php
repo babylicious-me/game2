@@ -35,25 +35,15 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
 
-
     @vite('resources/js/app.js')
     @inertiaHead
-    <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
-    <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
+    <style>
+      html, body {
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+      }
+    </style>
   </head>
   <body>
     @inertia
-    <!-- 
-      LCP (Largest Contentful Paint) for <p class="mt-2 text-gray-400"> in Home.vue means:
-      - This <p> is the largest visible element when the page loads.
-      - To improve LCP:
-        1. Optimize images above/before this <p> (compress, use correct size).
-        2. Minimize layout shift: set explicit width/height on images/cards.
-        3. Reduce JS/CSS blocking time (keep only critical CSS/JS in <head>).
-        4. Move this <p> higher in the DOM if possible, or reduce content above it.
-        5. Avoid large banners or slow-loading elements above this <p>.
-      - The font is already optimized.
-      - For best results, keep your hero/game cards and this <p> as high and simple as possible in your Vue template.
-    -->
   </body>
 </html>
