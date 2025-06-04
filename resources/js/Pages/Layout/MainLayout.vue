@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col min-h-screen">
-    <nav class="relative bg-white shadow dark:bg-gray-900">
+    <nav class="relative bg-gray-900 shadow">
       <div class="container px-6 py-4 mx-auto">
         <div class="lg:flex lg:items-center lg:justify-between">
           <div class="flex items-center justify-between">
@@ -54,11 +54,18 @@
       </div>
     </nav>
     <div class="flex-1 flex flex-row">
-      <!-- Left Ad -->
+      <!-- Left Google Ad -->
       <div class="hidden lg:block w-0 lg:w-24 xl:w-32 flex-shrink-0">
-        <div class="sticky top-8 flex flex-col items-center">
-          <div id="left-adsense" class="w-full">
-            <!-- Google AdSense vertical ad will be injected here -->
+        <div class="h-full flex items-center justify-center">
+          <div>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3574329224038401" crossorigin="anonymous"></script>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-3574329224038401"
+                 data-ad-slot="1929848082"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
           </div>
         </div>
       </div>
@@ -66,29 +73,36 @@
       <main class="flex-1">
         <slot />
       </main>
-      <!-- Right Ad -->
+      <!-- Right Google Ad -->
       <div class="hidden lg:block w-0 lg:w-24 xl:w-32 flex-shrink-0">
-        <div class="sticky top-8 flex flex-col items-center">
-          <div id="right-adsense" class="w-full">
-            <!-- Google AdSense vertical ad will be injected here -->
+        <div class="h-full flex items-center justify-center">
+          <div>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3574329224038401" crossorigin="anonymous"></script>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-3574329224038401"
+                 data-ad-slot="1929848082"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
           </div>
         </div>
       </div>
     </div>
-    <footer class="bg-white dark:bg-gray-900">
+    <footer class="bg-gray-900">
       <div class="container flex flex-col items-center justify-between px-6 py-8 mx-auto lg:flex-row">
-        <Link href="/" class="flex items-center text-gray-800 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400">
+        <Link href="/" class="flex items-center text-gray-200 hover:text-blue-400">
           Home
         </Link>
         <div class="flex flex-wrap items-center justify-center gap-4 mt-6 lg:gap-6 lg:mt-0">
-            <Link href="/about" class="text-sm text-gray-600 transition-colors duration-300 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400">
+            <Link href="/about" class="text-sm text-gray-300 transition-colors duration-300 hover:text-blue-400">
                 About
           </Link>
-          <Link href="/privacy" class="text-sm text-gray-600 transition-colors duration-300 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400">
+          <Link href="/privacy" class="text-sm text-gray-300 transition-colors duration-300 hover:text-blue-400">
             Privacy
           </Link>
         </div>
-        <p class="mt-6 text-sm text-gray-500 lg:mt-0 dark:text-gray-400">© Copyright 2023 Meraki UI. </p>
+        <p class="mt-6 text-sm text-gray-400 lg:mt-0">© Copyright 2025 True Or Lie.</p>
       </div>
     </footer>
   </div>
@@ -100,33 +114,4 @@ import { Link } from '@inertiajs/vue3'
 
 const logoUrl = '/favicon_io/android-chrome-192x192.png'
 
-onMounted(() => {
-  // Inject AdSense script only once
-  if (!document.querySelector('script[src*="adsbygoogle.js"]')) {
-    const script = document.createElement('script')
-    script.async = true
-    script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3574329224038401"
-    script.crossOrigin = "anonymous"
-    document.head.appendChild(script)
-  }
-  // Insert ad containers
-  const adHtml = `
-    <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-3574329224038401"
-      data-ad-slot="5373666439"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-  `
-  const left = document.getElementById('left-adsense')
-  const right = document.getElementById('right-adsense')
-  if (left && !left.innerHTML) left.innerHTML = adHtml
-  if (right && !right.innerHTML) right.innerHTML = adHtml
-  // Trigger adsbygoogle
-  setTimeout(() => {
-    if (window.adsbygoogle) {
-      try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) {}
-    }
-  }, 500)
-})
 </script>
